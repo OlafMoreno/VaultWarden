@@ -1,0 +1,12 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      - WEBSOCKET_ENABLED=true # Habilita notificaciones en tiempo real en las aplicaciones
+    ports:
+      - "8080:80"   # Puerto para la interfaz web principal
+      - "3012:3012" # Puerto para WebSockets
+    volumes:
+      - ./vw-data:/data
